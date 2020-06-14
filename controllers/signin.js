@@ -3,6 +3,10 @@ const handleSignin = (req, res, db, bcrypt)=> {
     if (!email || !password){
         return res.status(400).json("incorrect form submission");
     }
+    if (!email.includes('.com') || !email.includes('@') ){
+        return res.status(400).json("invalid email address");
+    }
+
     db.select('email', 'hash').from('login')
     .where('email', '=', email)
     .then(data => {
