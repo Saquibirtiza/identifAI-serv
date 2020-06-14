@@ -14,8 +14,8 @@ const db = knex({
     connection: {
         connectionString: process.env.DATABASE_URL,
         ssl: true,
-    },
-})
+    }
+});
 
 db.select('*').from('users').then(data => {
     console.log(data);
